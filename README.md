@@ -24,9 +24,9 @@ In the [image_manip.zip](https://github.com/HarirFahem/Homework1/edit/main/READM
 Here is a glance for this class header:
 
 
-### Markdown
 
-class PNG{
+
+```class PNG{
     PNG();   //default constructor
     PNG(int, int): //constructor with width and height
     ~PNG();         //Destructor
@@ -34,8 +34,9 @@ class PNG{
     bool writeToFile(string);  //write content to a file
     HSLAPixel  getPixel(int x, int y); //get content for pixel x, y
 };
-```markdown
-Syntax highlighted code block
+```
+
+
 
 # Header 1
 ## Header 2

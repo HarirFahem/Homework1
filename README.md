@@ -185,7 +185,7 @@ GrayScale G("res/euromed_image.png");
 ```
  ![real image](/grayscale_image.png) Here , we are showing the effect of reducing the saturation of each pixel : ![change image](/image_change 3.png) 
  
- ### Illini
+ ### **Illini**
  
  We created a class named Illini that inherits from the Image class. An illini image has only two colors that are defined as attributes (color1 and color2), the constructor accepts these two colors. The hue of every pixel is set to the hue value of either orange or blue, based on if the pixel's hue value is closer to orange than blue.
  

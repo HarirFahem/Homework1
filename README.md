@@ -26,7 +26,8 @@ Here is a glance for this class header:
 
 
 
-```class PNG{
+```javascript
+class PNG{
     PNG();   //default constructor
     PNG(int, int): //constructor with width and height
     ~PNG();         //Destructor
@@ -39,10 +40,74 @@ Here is a glance for this class header:
 
 ## **Inheritance diagram** 
 ![Diagramme](https://raw.githubusercontent.com/HarirFahem/Homework1/main/diagramme.png)
+                  UML class diagram for the additional Images classes.
+
+### Image
+We created a class named Image that inherits from the PNG class. 
+We added the following methods: 
+ *Image (string filename): a special constructor that loads the image from the given filename.
+ *lighten (double amount) changes the luminance of each pixel by amount.
+Here is the code for the Image class:
+```javascript
+class Image : public PNG
+{
+public:
+    using PNG :: PNG;
+    //method
+    Image(string filename);
+    void lighten(double amount=0.1);
+    virtual void saturate(double amount=0.1);
+    virtual void rotateColor(double angle);
+};
+```
+And here is the implementation of these methods:
+```javascript
+#include "image.h"
+
+Image::Image(string filename) : PNG()
+{
+    //lecture à partir d'un fichier
+ readFromFile(filename);
+}
+void Image::lighten(double amount)
+{
+    for(unsigned i=0;i<width();i++)
+        for(unsigned j=0;j<height();j++)
+        {
+            HSLAPixel &P=getPixel(i,j);
+            P.l += amount * P.l;
+            P.l = (P.l>0)?P.l:0;
+            P.l = (P.l<=1)?P.l:1;
+        }
+}
+void Image::saturate(double amount)
+{
+    for(unsigned i=0;i<width();i++)
+        for(unsigned j=0;j<height();j++)
+        {
+            HSLAPixel &P=getPixel(i,j);
+            P.s += amount * P.s ;
+            P.s  = (P.s>0)?P.s :0;
+            P.s  = (P.s<=1)?P.s :1;
+        }
+}
+void Image::rotateColor(double angle){
+    for(unsigned i=0;i<width();i++)
+        for(unsigned j=0;j<height();j++)
+        {
+            HSLAPixel &P=getPixel(i,j);
+            P.h +=angle;
+            while(P.h>360){
+                P.h -= 360;
+            }
+            while(P.h<0){
+                P.h += 360;
+            }
 
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/HarirFahem/Homework1/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
+        }
+}
+```
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

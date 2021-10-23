@@ -3,8 +3,11 @@
 ## **Introduction** 
 #### “” **The only way to learn a new programming language is by writing programs in it.**””
 The **HSLA** define colors using the Hue-saturation-lightness-alpha model.
+
 **HSLA color** values are an extension of HSL color values with an alpha channel which specifies the opacity of the color.
+
 The **hue** is a degree on the color wheel from 0°to 360°. The value of pixel of an image is represented by the RGB color system (0 is Red, 120 is Green, 240 is blue).
+
 The **saturation** is a percentage value, 0% is a shade of gray, and 100% is the full color, and it can be described as the intensity of a color:
 * 100% is pure color, no shades of gray
 *	50% is 50% of gray, but the color is still visible 

@@ -38,6 +38,7 @@ Here is a glance for this class header:
 
 
 ## **Inheritance diagram** 
+![Diagramme](https://raw.githubusercontent.com/HarirFahem/Homework1/main/diagramme.png)
 
 
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/HarirFahem/Homework1/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.

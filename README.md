@@ -119,6 +119,7 @@ int main() {
     return 0;
 }
 ```
+ ![real image](/euromed_image.png)  ![change image](/image_change.png) 
 
  * For the saturation:
  ``` javascript

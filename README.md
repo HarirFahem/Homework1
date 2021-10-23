@@ -110,6 +110,7 @@ void Image::rotateColor(double angle){
 ```
 And for showing this result we wrote in the main class the following code:
 *  For the lightning:
+   Effect of adding 0.4 light on the image:
 ``` javascript
 int main() {
    Image IM("res/euromed_image.png");
@@ -119,7 +120,8 @@ int main() {
     return 0;
 }
 ```
- ![real image](/euromed_image.png)  ![change image](/image_change.png) 
+
+ ![real image](/euromed_image.png) Effect of adding 0.4 light on the image: ![change image](/image_change.png) 
 
  * For the saturation:
  ``` javascript
@@ -130,12 +132,117 @@ int main() {
     return 0;
 }
 ```
+ ![real image](/euromed_image.png) Effect of adding 0.9 light on the image: ![change image](/image_change 1.png) 
 
 * For the rotateColor:
+ ```javascript
+    int main() {
+   Image IM("res/euromed_image.png");
+    IM.rotateColor(99);
+    IM.writeToFile("res/image_change.png");
+    return 0;
+} 
+```
+  ![real image](/euromed_image.png) Effect of rotating the image by 99 degrees ![change image](/image_change 2.png) 
+  
+  ### Grayscale
+  We wrote a simple class called Grayscale that inherits from Image class. It eliminates all the colors and represents the image using only grayscale level.
+Here is the code for the Grayscale class:
+```javascript
+#include "image.h"
+
+class GrayScale : public Image
+{
+public:
+    using Image::Image;
+    GrayScale(string filename);
+};
+```
+And here is the implementation of these methods:
+```javascript
+#include "grayscale.h"
+GrayScale::GrayScale(string filename):Image()
+{
+    readFromFile(filename);
+
+    Image::saturate(-0.9);
+}
+```
+And in the main class, we wrote those lines to call the methods and showing the result:
+```javascript
+int main() {
+GrayScale G("res/euromed_image.png");
+    G.writeToFile("res/image_change.png");
+  return 0;
+}
+```
+ ![real image](/grayscale_image.png) Here , we are showing the effect of reducing the saturation of each pixel : ![change image](/image_change 3.png) 
+ 
+ ### Illini
+ We created a class named Illini that inherits from the Image class. An illini image has only two colors that are defined as attributes (color1 and color2), the constructor accepts these two colors.   It replaced he hue of every pixel is set to the hue value of either orange or blue, based on if the pixel's hue value is closer to orange than blue.
+Here is the code for the Illini class:
+```javascript
+#include <image.h>
+
+class Illini: public Image
+{
+public:
+    int color1;
+    int color2;
+    Illini(string filename);
+    using Image::Image;
+    Illini(string filename, int color1, int color2);
+    void blueorange();
+};
+```
+And here is the implementation of these methods:
+```javascript
+#include "illini.h"
+Illini::Illini(string filename):Image()
+{
+    readFromFile(filename);
+}
+Illini::Illini(string filename, int color1, int color2):Image(filename)
+{
+    this->color1=color1;
+    this->color2=color2;
+}
+void Illini::blueorange(){
+    for (unsigned x = 0; x < width(); x++) {
+        for (unsigned y = 0; y < height(); y++) {
+          HSLAPixel & P =getPixel(x, y);
+          color1=11;
+          color2=216;
+          if (abs(P.h - color1) < abs(P.h - color2)) {
+              P.h = color1;
+          }
+          else {
+              P.h = color2;
+          }
+        }
+      }
+}
+```
+And here is the part of the main class:
+```javascript
+int main() {
+Illini I("res/illini_image.png");
+    I.blueorange();
+    I.writeToFile("res/image_change.png");
+return 0;
+}
+```
+![real image](/illini_image.png) Here is the illini image which only has two colors : the blue and the orange ![change image](/image_change 4.png) 
 
 
 
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+
+
+
+
+
+
+

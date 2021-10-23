@@ -60,7 +60,7 @@ public:
     virtual void rotateColor(double angle);
 };
 ```
-And here is the implementation of these methods:
+And here is the implementation of these methods :
 ```javascript
 #include "image.h"
 

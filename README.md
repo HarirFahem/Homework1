@@ -48,8 +48,11 @@ class PNG{
 ### Image
 We created a class named Image that inherits from the PNG class. 
 We added the following methods: 
+
  *Image (string filename): a special constructor that loads the image from the given filename.
+ 
  *lighten (double amount) changes the luminance of each pixel by amount.
+ 
 Here is the code for the Image class:
 ```javascript
 class Image : public PNG
@@ -113,7 +116,7 @@ void Image::rotateColor(double angle){
 ```
 And for showing this result we wrote in the main class the following code:
 *  For the lightning:
-   Effect of adding 0.4 light on the image:
+   
 ``` javascript
 int main() {
    Image IM("res/euromed_image.png");
@@ -151,9 +154,9 @@ int main() {
   ### Grayscale
   We wrote a simple class called Grayscale that inherits from Image class. It eliminates all the colors and represents the image using only grayscale level.
 Here is the code for the Grayscale class:
+
 ```javascript
 #include "image.h"
-
 class GrayScale : public Image
 {
 public:
@@ -162,6 +165,7 @@ public:
 };
 ```
 And here is the implementation of these methods:
+
 ```javascript
 #include "grayscale.h"
 GrayScale::GrayScale(string filename):Image()
@@ -182,7 +186,9 @@ GrayScale G("res/euromed_image.png");
  ![real image](/grayscale_image.png) Here , we are showing the effect of reducing the saturation of each pixel : ![change image](/image_change 3.png) 
  
  ### Illini
- We created a class named Illini that inherits from the Image class. An illini image has only two colors that are defined as attributes (color1 and color2), the constructor accepts these two colors.   It replaced he hue of every pixel is set to the hue value of either orange or blue, based on if the pixel's hue value is closer to orange than blue.
+ 
+ We created a class named Illini that inherits from the Image class. An illini image has only two colors that are defined as attributes (color1 and color2), the constructor accepts these two colors. The hue of every pixel is set to the hue value of either orange or blue, based on if the pixel's hue value is closer to orange than blue.
+ 
 Here is the code for the Illini class:
 ```javascript
 #include <image.h>
@@ -241,6 +247,7 @@ return 0;
 We created a class called spotlight and returns an image with a spotlight centred at (centerX and centerY).
 A Spotlight image create a spotlight centered at a given point centerX, centerY defined as attributes.
 A spotlight adjusts the luminance of a pixel based on the Euclidean distance the pixel is away from the center by decreasing the luminance by 0.5% per 1 pixel, up to 80% decrease of luminance.
+
 Here is the code for the Spotlight class:
 ```javascript
 #include <image.h>
@@ -312,6 +319,13 @@ Spotlight S("res/euromed_image.png",300,500);
 }
 ```
 ![real image](/euromed_image.png) Here is the illustration of spotlight effect: ![change image](/image_change 5.png) 
+
+
+Made by : 
+      Harir wafa
+      Fahem khadija
+     
+     
 
 
 

@@ -23,7 +23,10 @@ The **report** sets out to apply different themes (lighten, grayscale, illini an
 In the [image_manip.zip](https://github.com/HarirFahem/Homework1/edit/main/README.md) you are given a project which contain a class called PNG that implement basic images manipulation such as Reading Writing and Accessing pixels.
 Here is a glance for this class header:
 
-```class PNG{
+
+### Markdown
+
+class PNG{
     PNG();   //default constructor
     PNG(int, int): //constructor with width and height
     ~PNG();         //Destructor
@@ -31,15 +34,6 @@ Here is a glance for this class header:
     bool writeToFile(string);  //write content to a file
     HSLAPixel  getPixel(int x, int y); //get content for pixel x, y
 };
-```
-
-
-
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
 ```markdown
 Syntax highlighted code block
 

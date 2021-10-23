@@ -234,6 +234,87 @@ return 0;
 ```
 ![real image](/illini_image.png) Here is the illini image which only has two colors : the blue and the orange ![change image](/image_change 4.png) 
 
+### Spotlight
+We created a class called spotlight and returns an image with a spotlight centred at (centerX and centerY).
+A Spotlight image create a spotlight centered at a given point centerX, centerY defined as attributes.
+A spotlight adjusts the luminance of a pixel based on the Euclidean distance the pixel is away from the center by decreasing the luminance by 0.5% per 1 pixel, up to 80% decrease of luminance.
+Here is the code for the Spotlight class:
+```javascript
+#include <image.h>
+class Spotlight:public Image
+{
+public:
+    Spotlight(string filename,int centerX, int centerY);
+    using Image::Image;
+    void changeSpotPoint(int centerX, int centerY);
+private:
+    int xCenter;
+    int yCenter;
+};
+```
+And here is the implementation of these methods:
+```javascript
+#include "spotlight.h"
+#include <math.h>
+
+Spotlight::Spotlight(string filename, int centerX, int centerY):Image()
+{
+int x=0,y=0;
+    readFromFile(filename);
+    this->xCenter = centerX;
+    this->yCenter = centerY;
+    for (unsigned i = 0; i < width(); i++) {
+            for (unsigned j= 0; j <height(); j++) {
+            HSLAPixel & P=getPixel(i, j);
+            x=i-centerX;
+            y=j-centerY;
+            int d=sqrt((x*x)+(y*y));
+
+           if(d<160)
+                 P.l=P.l-(0.5*d/100)*P.l;
+           else
+                 P.l = P.l - 0.8*P.l;
+      }
+    }
+}
+
+void Spotlight::changeSpotPoint(int centerX, int centerY){
+    for (int x = 0; x < width(); ++x){
+        for (int y = 0; y < height(); ++y){
+            HSLAPixel & P = getPixel(x, y);
+            auto oldd = sqrt(pow(x-this->xCenter,2) + pow(y-this->yCenter,2));
+            auto newd = sqrt(pow(x-centerX,2) + pow(y-centerY,2));
+            if (oldd < 160 || newd < 160){
+                if(newd > 160)
+                  P.l *=.2;
+                else
+                  P.l *= 1-.005*newd;
+                if(oldd > 160)
+                  P.l /=.2;
+                else
+                  P.l /= 1-.005*oldd;
+            }
+        }
+    }
+    this->xCenter = centerX;
+    this->yCenter = centerY;
+}
+```
+And for the mainly part:
+```javascript
+int main() {
+Spotlight S("res/euromed_image.png",300,500);
+    S.changeSpotPoint(600,600);
+    S.writeToFile("res/image_change.png");return 0;
+}
+```
+![real image](/euromed_image.png) Here is the illustration of spotlight effect: ![change image](/image_change 5.png) 
+
+
+
+
+
+
 
 
 

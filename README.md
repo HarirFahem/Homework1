@@ -108,6 +108,33 @@ void Image::rotateColor(double angle){
         }
 }
 ```
+And for showing this result we wrote in the main class the following code:
+*  For the lightning:
+``` javascript
+int main() {
+   Image IM("res/euromed_image.png");
+    IM.lighten(.4);
+    IM.writeToFile("res/image_change.png");
+
+    return 0;
+}
+```
+
+ * For the saturation:
+ ``` javascript
+   int main() {
+   Image IM("res/euromed_image.png");
+    IM.saturate(.9);
+    IM.writeToFile("res/image_change.png");
+    return 0;
+}
+```
+
+* For the rotateColor:
+
+
+
+
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

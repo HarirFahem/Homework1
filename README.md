@@ -23,7 +23,7 @@ The **full HSL color** space is a three-dimensional space, but it is not a cube.
 The **report** sets out to apply different themes (lighten, grayscale, illini and spotlight) to an image by making variations in the lightning, the saturation and the hue.
 
 ## **The PNG class**
-In the [image_manip.zip](https://github.com/HarirFahem/Homework1/blob/main/fahem_harir_image%20(1).zip) you are given a project which contain a class called PNG that implement basic images manipulation such as Reading Writing and Accessing pixels.
+In the [image_manip.zip](/fahem_harir_image (1).zip) you are given a project which contain a class called PNG that implement basic images manipulation such as Reading Writing and Accessing pixels.
 Here is a glance for this class header:
 
 
